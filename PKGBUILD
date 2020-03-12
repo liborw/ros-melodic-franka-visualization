@@ -9,15 +9,15 @@ url="http://wiki.ros.org/franka_visualization"
 license=('Apache 2.0')
 
 makedepends=(
-
-
+'cmake'
 )
 
 depends=(
-
+'ros-melodic-sensor-msgs'
+'ros-melodic-roscpp'
+'ros-melodic-libfranka'
 'ros-melodic-franka-description'
 'ros-melodic-xacro'
-
 )
 
 provides=($pkgname)
