@@ -1,18 +1,22 @@
-
-# Maintainer: 
 pkgname="ros-melodic-franka-visualization"
 pkgver="0.6.0"
 pkgrel=1
 pkgdesc="This package contains visualization tools for Franka Emika."
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_visualization"
 license=('Apache 2.0')
 
-makedepends=(
-'cmake'
+ros_makedepends=(
+'ros-melodic-catkin'
 )
 
-depends=(
+makedepends=(
+'cmake'
+'ros-build-tools'
+${ros_makedepends[@]}
+)
+
+ros_depends=(
 'ros-melodic-sensor-msgs'
 'ros-melodic-roscpp'
 'ros-melodic-libfranka'
@@ -20,11 +24,17 @@ depends=(
 'ros-melodic-xacro'
 )
 
+depends=(
+${ros_depends[@]}
+)
+
 provides=($pkgname)
 conflicts=($pkgname)
-_dir="franka_ros-release-release-melodic-franka_visualization-0.6.0-1"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_visualization/0.6.0-1.tar.gz")
-md5sums=('16abc3b239197eddca6e8b011dd467ae')
+
+_dir="franka_ros-$pkgver/franka_visualization"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros/archive/$pkgver.tar.gz")
+sha256sums=(6bfc7f743569e7491d44b82e1b9c39ace55881b7f42e4952e202e13d1e70a6b9)
+
 
 build() {
 	# Use ROS environment variables
